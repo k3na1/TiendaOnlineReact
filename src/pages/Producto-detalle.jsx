@@ -1,6 +1,9 @@
-// src/pages/ProductoDetalle.jsx
+// src/pages/Producto-detalle.jsx
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useProductos } from "../store/useProductos";
+import { useCarrito } from "../store/useCarrito";
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../assets/styles/catalogo.css";
@@ -8,6 +11,17 @@ import "../assets/styles/catalogo.css";
 export default function ProductoDetalle() {
   const { id } = useParams();
   const productos = useProductos((s) => s.productos);
+  const { agregar } = useCarrito();
+  const [cantidad, setCantidad] = useState(1);
+
+  useEffect(() => {
+  // Recarga datos desde localStorage cuando se monta
+  const data = localStorage.getItem("carrito");
+  if (data) {
+    useCarrito.setState({ items: JSON.parse(data) });
+  }
+  }, []);
+
   const producto = productos.find((p) => p.id === id);
 
   if (!producto) {
@@ -21,6 +35,11 @@ export default function ProductoDetalle() {
       </>
     );
   }
+
+  const handleAgregar = () => {
+    agregar(producto, cantidad);
+    alert(`✅ ${cantidad} unidad(es) de "${producto.nombre}" añadida(s) al carrito`);
+  };
 
   return (
     <>
@@ -41,14 +60,18 @@ export default function ProductoDetalle() {
               name="cantidad"
               min="1"
               max={producto.stock}
-              defaultValue="1"
+              value={cantidad}
+              onChange={(e) => setCantidad(parseInt(e.target.value))}
             />
           </div>
-          <button className="btn-agregar-carrito">Añadir al Carrito</button>
+          <button className="btn-agregar-carrito" onClick={handleAgregar}>
+            Añadir al Carrito
+          </button>
         </div>
       </main>
       <Footer />
     </>
   );
 }
- 
+
+

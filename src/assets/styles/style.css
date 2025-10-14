@@ -21,6 +21,7 @@ main {
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    flex-direction: column;
 }
 
 main h1 {
@@ -138,6 +139,8 @@ footer {
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 50%;
+  z-index: 10;
+  width: 100px;
 }
 .carrusel-btn.prev { left: 10px; }
 .carrusel-btn.next { right: 10px; }
@@ -152,7 +155,7 @@ footer {
 }
 .destacados-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 .destacados .producto-card {
@@ -194,3 +197,4 @@ footer {
         padding: 0.8rem;
     }
 }
+
