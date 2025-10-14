@@ -1,13 +1,4 @@
 /* === Reset y base === */
-body {
-    margin: 0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #f8f5f0; /* tono crema */
-    color: #2c2c2c;
-}
 
 h1, h2, h3 {
     font-family: "Merriweather", Georgia, serif;
@@ -197,4 +188,30 @@ footer {
         padding: 0.8rem;
     }
 }
+
+/*Nuevo css*/
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  background-color: #f0a500 !important;
+  color: #3e2723 !important;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* ✅ asegura que empuje el footer hacia abajo */
+}
+
+
 

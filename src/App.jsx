@@ -9,6 +9,8 @@ import Carrito from "./pages/Carrito";
 import Pago from "./pages/Pago";
 import Registro from "./pages/Registro";
 import Login from "./pages/Login";
+import PanelAdmin from "./pages/admin/PanelAdmin";
+import AdminUsuarios from "./pages/admin/AdminUsuarios";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/pago" element={<Pago />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<PanelAdmin />} />
+        <Route path="/admin/usuarios" element={<AdminUsuarios />} />
       </Routes>
     </BrowserRouter>
   );

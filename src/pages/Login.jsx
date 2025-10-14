@@ -24,8 +24,8 @@ export default function Login() {
 
     alert(`Bienvenido ${res.user.nombre} (${res.user.tipo}) 👋`);
 
-    if (res.user.tipo === "Administrador") navigate("/panel");
-    else if (res.user.tipo === "Vendedor") navigate("/productos");
+    if (res.user.tipo === "Administrador") navigate("/admin");
+    else if (res.user.tipo === "Vendedor") navigate("/admin/productos");
     else navigate("/");
   };
 
